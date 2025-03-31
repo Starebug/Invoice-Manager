@@ -8,13 +8,11 @@ import {
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 interface iAppProps {
-  data: {
-    date: string;
-    amount: number;
-  }[];
+  data: any; // Replace 'any' with the actual type of 'data'
+  className?: string;
 }
 
-export function Graph({ data }: iAppProps) {
+export function Graph({ data, className }: iAppProps) {
   return (
     <ChartContainer
       config={{
@@ -23,7 +21,7 @@ export function Graph({ data }: iAppProps) {
           color: "hsl(var(--primary))",
         },
       }}
-      className="min-h-[300px]"
+      className={`${className} min-h-[300px]`}
     >
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>

@@ -121,3 +121,35 @@
     @apply bg-background text-foreground;
   }
 }
+@layer utilities {
+  :root {
+    --color-1: 0, 100%, 50%;
+    --color-2: 30, 100%, 50%;
+    --color-3: 60, 100%, 50%;
+    --color-4: 120, 100%, 50%;
+    --color-5: 240, 100%, 50%;
+    --speed: 2s;
+  }
+
+  .rainbow-bg {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--color-1)),
+      hsl(var(--color-2)),
+      hsl(var(--color-3)),
+      hsl(var(--color-4)),
+      hsl(var(--color-5))
+    );
+    background-size: 200% 100%;
+    animation: rainbow var(--speed) infinite linear;
+  }
+
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+}

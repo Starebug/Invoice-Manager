@@ -1,43 +1,21 @@
-"use client";
+import Image from "next/image";
+import Link from "next/link";
+import Logo from "@/public/logo.png";
+import { buttonVariants } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
-import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-
-interface iAppProps {
-  data: {
-    date: string;
-    amount: number;
-  }[];
-}
-
-export function Graph({ data }: iAppProps) {
+export function Navbar() {
   return (
-    <ChartContainer
-      config={{
-        amount: {
-          label: "Amount",
-          color: "hsl(var(--primary))",
-        },
-      }}
-      className="min-h-[300px]"
-    >
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data}>
-          <XAxis dataKey="date" />
-          <YAxis />
-          <ChartTooltip content={<ChartTooltipContent indicator="line" />} />
-          <Line
-            type="monotone"
-            dataKey="amount"
-            stroke="var(--color-amount)"
-            strokeWidth={2}
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    </ChartContainer>
+    <div className="flex items-center justify-between py-5">
+      <Link href="/" className="flex items-center gap-2">
+        <Image src={Logo} alt="Logo" className="size-10" />
+        <h3 className="text-3xl font-semibold">
+          Invoice<span className="text-blue-500">Manager</span>
+        </h3>
+      </Link>
+      <Link href="/login">
+        <RainbowButton>Get Started</RainbowButton>
+      </Link>
+    </div>
   );
 }

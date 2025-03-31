@@ -6,7 +6,7 @@ import {
     CardTitle,
   } from "@/components/ui/card";
   import { Graph } from "./Graph";
-  import prisma from "../utils/db";
+  import {prisma} from "../utils/db";
   import { requireUser } from "../utils/hooks";
   
   async function getInvoices(userId: string) {
@@ -61,17 +61,16 @@ import {
   export async function InvoiceGraph() {
     const session = await requireUser();
     const data = await getInvoices(session.user?.id as string);
-  
     return (
-      <Card className="lg:col-span-2">
+      <Card className="lg:col-span-2 max-w-full">
         <CardHeader>
           <CardTitle>Paid Invoices</CardTitle>
           <CardDescription>
             Invoices which have been paid in the last 30 days.
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <Graph data={data} />
+        <CardContent className="max-w-full">
+          <Graph className="max-w-full" data={data} />
         </CardContent>
       </Card>
     );
