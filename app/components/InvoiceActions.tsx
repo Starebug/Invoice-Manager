@@ -45,7 +45,7 @@ export default function InvoiceAction({id,status}:iAppProps) {
                 </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild> 
-                <Link href="" className="flex">
+                <Link href="" onClick={handleSendReminder} className="flex">
                 <Mail className="size-4 mr-2"/>Reminder Email
                 </Link>
                 </DropdownMenuItem>
